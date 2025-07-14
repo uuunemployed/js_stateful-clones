@@ -9,11 +9,12 @@
 function transformStateWithClones(state, actions) {
   const actionsArray = [];
   let stateCopy = { ...state };
-  let prevState = {};
 
   for (const i of actions) {
     stateCopy = createAction(i.type, stateCopy, i.keysToRemove, i.extraData);
-    prevState = { ...stateCopy };
+
+    const prevState = { ...stateCopy };
+
     actionsArray.push(prevState);
   }
 
